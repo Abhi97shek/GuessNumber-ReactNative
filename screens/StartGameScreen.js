@@ -4,6 +4,7 @@ import Card from "../components/Card";
 import Input from "../components/Input";
 import color from "../constants/color";
 import NumberContainer from "../components/NumberContainer";
+import MainButton from "../components/MainButton";
 const StartGameScreen = (props)=>{
 
         const [enterValue,setEnterValue] = useState('');
@@ -44,7 +45,7 @@ const StartGameScreen = (props)=>{
 
         let confirmedOutput;
 
-        if(confirmed)
+        if(!confirmed)
         {
                 confirmedOutput = 
                 <Card style={style.summaryContainer}>
@@ -52,7 +53,7 @@ const StartGameScreen = (props)=>{
                 <NumberContainer>
                     {selectedNumber}
                 </NumberContainer>
-                <Button title="START GAME" onPress={props.onGameStart(selectedNumber)}/>
+                <MainButton onPress={props.onGameStart(selectedNumber)}>START GAME</MainButton>
                 </Card>
         }
 
@@ -62,7 +63,9 @@ const StartGameScreen = (props)=>{
     return (
         <TouchableWithoutFeedback onPress={()=>{Keyboard.dismiss()}}>
         <View style={style.screen}>
-                <Image source={require('../assets/success.png')}/>
+            {/* <View style={style.imageContainer}>
+                <Image source={require('../assets/success.png')} style={style.image} resizeMode="cover"/>
+            </View> */}
                 <Text style={style.title}>Start a New Game!</Text>
                 <Card style={style.innerContainer}>
                     <Text>Select a Number</Text>
@@ -110,6 +113,19 @@ const style = StyleSheet.create({
         marginTop:40,
         alignItems:"center",
         color:'red'
+    },
+    imageContainer:{
+        width:'80%',
+        height:300,
+        borderRadius:150,
+        borderWidth:3,
+        borderColor:'black',
+        overflow:'hidden',
+        marginVertical:30
+    },
+    image:{
+        width:'100%',
+        height:'100%'
     }
 });
 
