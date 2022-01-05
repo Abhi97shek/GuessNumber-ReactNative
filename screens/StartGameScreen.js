@@ -45,7 +45,7 @@ const StartGameScreen = (props)=>{
 
         let confirmedOutput;
 
-        if(!confirmed)
+        if(confirmed)
         {
                 confirmedOutput = 
                 <Card style={style.summaryContainer}>
